@@ -8,8 +8,22 @@ header {
 main {
     max-width: 1000px;
     margin: 0 auto;
+    padding: 50px 0;
 }
 
 .card {
     margin: 25px 0;
+}
+
+
+.author {
+    color:#A9A9A9;
+}
+.home-post:hover {
+    cursor: pointer;
+}
+.login-container {
+    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
 }

@@ -1,1 +1,7 @@
 Dashboard
+<h4>My Posts</h4>
+{{#each posts as |post|}}
+    <a href='/post/{{post.id}}'>
+        {{> post-card post}}
+    </a>
+{{/each}}

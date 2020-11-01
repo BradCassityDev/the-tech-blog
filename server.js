@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const helpers = require('./utils/helpers');
 const app = express();
 
 app.use(session({
@@ -17,7 +17,7 @@ app.use(session({
     })
 }));
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers});
 
 // Middleware
 app.use(express.json());
