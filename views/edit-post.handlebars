@@ -1,0 +1,24 @@
+<h2>Edit Post</h2>
+
+<form class='update-post-form'>
+    <div class="form-group">
+        <label for='title'>Title</label>
+        <input type='text' id='title' class="form-control" name='title' value='{{post.title}}'>
+        
+    </div>
+    <div class="form-group">
+        <label for='post_body'>Body</label>
+        <textarea id='post_body' class="form-control" name='post-body'>{{post.post_body}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type='submit' class='btn btn-primary'>Update</button>
+    </div>
+</form>
+
+<button id='delete-btn' class='btn btn-danger'>Delete</button>
+
+<h4>Comments</h4>
+<button>Add Comment</button>
+
+<script src="/javascript/updatePost.js"></script>
+<script src="/javascript/deletePost.js"></script>
