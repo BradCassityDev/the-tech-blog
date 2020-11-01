@@ -79,6 +79,50 @@ router.post('/', (req, res) => {
     });
 });
 
+// User login - /api/users/login
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    })
+    .then(userData => {
+        if (!userData) {
+            res.status(400).json({message: 'No user found with this username'});
+            return;
+        }
+
+        // Validate password
+        const validatePass = userData.checkPassword(req.body.password);
+        if (!validatePass) {
+            res.status(400).json({message: 'Incorrect password!'});
+            return;
+        }
+
+        // Save new session
+        req.session.save(() => {
+            req.session.user_id = userData.id,
+            req.session.username = userData.username,
+            req.session.isLoggedIn = true
+
+
+            res.json({user: userData, message: 'Logged In!'});
+        });
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+// User logout - /api/users/logout
+router.post('/logout', (req, res) => {
+    if (req.session.isLoggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
 // Delete a user - /api/users/:id
 router.delete('/:id', (req, res) => {
     User.destroy({
