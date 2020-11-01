@@ -1,17 +1,31 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models/index');
+const { User, Post, Comment } = require('../../models/index');
 
 // Get all users - /api/users/
 router.get('/', (req, res) => {
     User.findAll({
-        attributes: {exclude: ['password']}
+        attributes: {exclude: ['password']},
+        include: [
+            {
+                model: Post,
+                attributes: ['id', 'title', 'post_body', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['id', 'title']
+                }
+            }
+        ]
     })
     .then(userData => {
-        res.json({userData});
+        res.json(userData);
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json({err});
+        res.status(500).json(err);
     });
 });
 
@@ -21,7 +35,21 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: {exclude: ['password']}
+        attributes: {exclude: ['password']},
+        include: [
+            {
+                model: Post,
+                attributes: ['id', 'title', 'post_body', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['id', 'title']
+                }
+            }
+        ]
     })
     .then(userData => {
         if(!userData) {
@@ -32,7 +60,7 @@ router.get('/:id', (req, res) => {
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json({err});
+        res.status(500).json(err);
     });
 });
 
@@ -40,7 +68,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
-        email: req.body.email,
         password: req.body.password
     })
     .then(userData => {
