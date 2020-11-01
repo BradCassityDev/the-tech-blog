@@ -19,8 +19,15 @@ main {
 .author {
     color:#A9A9A9;
 }
+.home-post {
+    color: #000000;
+}
 .home-post:hover {
+    text-decoration: none;
+}
+.home-post .card:hover {
     cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .login-container {
     padding: 15px;

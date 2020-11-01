@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models/index');
+const checkAuth = require('../../utils/auth');
 
 // Render Dashboard
-router.get('/', (req, res) => {
+router.get('/', checkAuth, (req, res) => {
     Post.findAll({
         where: {
           user_id: req.session.user_id
@@ -23,7 +24,7 @@ router.get('/', (req, res) => {
       })
         .then(postData => {
           const posts = postData.map(post => post.get({ plain: true }));
-          res.render('dashboard', { posts, loggedIn: true });
+          res.render('dashboard', { posts, isLoggedIn: req.session.isLoggedIn, username: req.session.username });
         })
         .catch(err => {
           console.log(err);
@@ -32,7 +33,7 @@ router.get('/', (req, res) => {
 });
 
 // Render Edit Post
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', checkAuth, (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -61,7 +62,7 @@ router.get('/edit/:id', (req, res) => {
         // serialize the data
         const post = postData.get({ plain: true });
 
-        res.render('edit-post', { post, isLoggedIn: req.session.isLoggedIn });
+        res.render('edit-post', { post, isLoggedIn: req.session.isLoggedIn, username: req.session.username });
     })
     .catch(err => {
         console.log(err);
@@ -70,7 +71,7 @@ router.get('/edit/:id', (req, res) => {
 });
 
 // Render Create Post
-router.get('/create', (req, res) => {
+router.get('/create', checkAuth, (req, res) => {
     res.render('create-post');
 });
 

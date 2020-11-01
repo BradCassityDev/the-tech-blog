@@ -1,6 +1,6 @@
 <h2>Home</h2>
 {{#each posts as |post|}}
-    <a href='/post/{{post.id}}'>
+    <a class='home-post' href='/post/{{post.id}}'>
         {{> post-card post}}
     </a>
 {{/each}}

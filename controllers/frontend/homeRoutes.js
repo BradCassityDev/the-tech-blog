@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     })
     .then(postData => {
         const posts = postData.map(post => post.get({plain: true}));
-        res.render('home', { posts });
+        res.render('home', { posts, isLoggedIn: req.session.isLoggedIn, username: req.session.username });
     })
     .catch(err => {
         console.log(err);
@@ -78,7 +78,7 @@ router.get('/post/:id', (req, res) => {
         // serialize the data
         const post = postData.get({ plain: true });
 
-        res.render('single-post', { post, isLoggedIn: req.session.isLoggedIn });
+        res.render('single-post', { post, isLoggedIn: req.session.isLoggedIn, username: req.session.username });
     })
     .catch(err => {
         console.log(err);
