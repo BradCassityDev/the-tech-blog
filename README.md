@@ -22,6 +22,8 @@ Clone the repo to your local enviroment. You must have Node and MYSQL installed 
 
 Users will use this system to perform CRUD operations against the data stored in the database to manage their online blog posts. Users can also leave comments on other posts.
 
+Deployed Application: [The Tech Blog](https://salty-woodland-37971.herokuapp.com/)
+
 ## Questions
 
 GitHub profile [BradCassityDev](https://github.com/BradCassityDev)
