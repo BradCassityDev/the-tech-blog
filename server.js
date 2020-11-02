@@ -10,10 +10,10 @@ const app = express();
 app.use(session({
     secret: process.env.SessionSecret,
     cookie: {
-        maxAge: 60000
+        maxAge: 600000
     },
     rolling: true,
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize

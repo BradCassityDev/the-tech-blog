@@ -17,7 +17,7 @@ header nav {
 main {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 50px 15px;
+    padding: 30px 15px;
 }
 
 .card {
@@ -43,4 +43,8 @@ main {
     max-width: 500px;
     margin: 0 auto;
     background-color: #FFFFFF;
+}
+
+.btn {
+    min-width: 150px;
 }
