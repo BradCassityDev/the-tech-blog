@@ -3,4 +3,10 @@ Single Post
 {{> post-card post}}
 
 <h4>Comments</h4>
-<button>Add Comment</button>
+{{#if isLoggedIn}}
+    {{> add-comment}}
+{{else}}
+<p>You must be signed in to leave a comment. <a href='/login'>Login</a></p>
+{{/if}}
+
+{{> comments post.comments}}

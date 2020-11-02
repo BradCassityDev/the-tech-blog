@@ -18,7 +18,9 @@
 <button id='delete-btn' class='btn btn-danger'>Delete</button>
 
 <h4>Comments</h4>
-<button>Add Comment</button>
+{{> add-comment}}
+
+{{> comments post.comments}}
 
 <script src="/javascript/updatePost.js"></script>
 <script src="/javascript/deletePost.js"></script>
