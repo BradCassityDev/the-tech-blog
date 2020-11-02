@@ -72,7 +72,7 @@ router.get('/edit/:id', checkAuth, (req, res) => {
 
 // Render Create Post
 router.get('/create', checkAuth, (req, res) => {
-    res.render('create-post');
+    res.render('create-post', {isLoggedIn: req.session.isLoggedIn, username: req.session.username});
 });
 
 module.exports = router;

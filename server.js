@@ -7,10 +7,11 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const helpers = require('./utils/helpers');
 const app = express();
 
+// Set session with options
 app.use(session({
     secret: 'secretpasscode',
     cookie: {
-        maxAge: 600000
+        maxAge: 300000
     },
     rolling: true,
     resave: false,
@@ -20,6 +21,7 @@ app.use(session({
     })
 }));
 
+// Include helper functions
 const hbs = exphbs.create({helpers});
 
 // Middleware
@@ -38,6 +40,6 @@ app.use(require('./controllers'));
 const PORT = process.env.PORT || 3001;
 
 // Connect to server if valid db connection established
-sequelize.sync({force: true}).then(() => {
+sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 });

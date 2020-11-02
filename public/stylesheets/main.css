@@ -2,13 +2,8 @@
 
 }
 
-body {
- 
-}
 
-header {
-    
-}
+
 
 header nav {
     background-color: #000000 !important;
@@ -28,15 +23,15 @@ main {
 .author {
     color:#A9A9A9;
 }
-.home-post {
+.post {
     color: #000000;
 }
-.home-post:hover {
+.post:hover {
     text-decoration: none;
 }
-.home-post .card:hover {
+.post .card:hover {
     cursor: pointer;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
 }
 .login-container {
     padding: 15px;
@@ -47,4 +42,7 @@ main {
 
 .btn {
     min-width: 150px;
+}
+.white {
+    color: #FFFFFF;
 }
