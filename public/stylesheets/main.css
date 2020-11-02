@@ -1,8 +1,17 @@
 * {
 
 }
-header {
 
+body {
+ 
+}
+
+header {
+    
+}
+
+header nav {
+    background-color: #000000 !important;
 }
 
 main {
@@ -33,4 +42,5 @@ main {
     padding: 15px;
     max-width: 500px;
     margin: 0 auto;
+    background-color: #FFFFFF;
 }

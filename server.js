@@ -9,8 +9,11 @@ const app = express();
 
 app.use(session({
     secret: process.env.SessionSecret,
-    cookie: {},
-    resave: false,
+    cookie: {
+        maxAge: 60000
+    },
+    rolling: true,
+    resave: true,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize
