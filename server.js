@@ -8,7 +8,7 @@ const helpers = require('./utils/helpers');
 const app = express();
 
 app.use(session({
-    secret: process.env.SessionSecret,
+    secret: 'secretpasscode',
     cookie: {
         maxAge: 600000
     },
